@@ -1,4 +1,7 @@
+import { useState } from "react";
 import { FaUser } from "react-icons/fa";
+import { useAuth } from "../Context/AuthContext";
+import { useNavigate } from "react-router-dom";
 import { MdMenu } from "react-icons/md";
 import { Link } from "react-router-dom";
 
@@ -10,7 +13,9 @@ import { useTheme } from "../Context/ThemeContext";
 function Navbar() {
   const { cartCount, toggleCart } = useCart();
   const { isDark, toggleTheme } = useTheme();
-  
+  const { user, signout } = useAuth();
+  const navigate = useNavigate();
+  const [openUserMenu, setOpenUserMenu] = useState(false);
 
   return (
     <nav
@@ -43,7 +48,6 @@ function Navbar() {
         md:px-10
       "
       >
-        
         <div className="flex items-center gap-4">
           <MdMenu
             className="
@@ -55,7 +59,6 @@ function Navbar() {
           "
           />
 
-          
           <Link
             to="/"
             className="
@@ -93,7 +96,6 @@ function Navbar() {
           </Link>
         </div>
 
-        
         <ul
           className="
           hidden
@@ -149,7 +151,6 @@ function Navbar() {
           </Link>
         </ul>
 
-        
         <div
           className="
           flex
@@ -159,7 +160,6 @@ function Navbar() {
           font-medium
         "
         >
-          
           <Link
             to="/about"
             className="
@@ -173,7 +173,6 @@ function Navbar() {
             About
           </Link>
 
-          
           <Link
             to="/contact"
             className="
@@ -187,7 +186,6 @@ function Navbar() {
             Contact
           </Link>
 
-          
           <button
             onClick={toggleTheme}
             className="
@@ -199,20 +197,46 @@ function Navbar() {
             {isDark ? "☀️" : "🌙"}
           </button>
 
-          
-          <FaUser
-            className="
-            hidden
-            md:block
-            cursor-pointer
-            text-lg
-            transition-transform
-            hover:scale-110
-            hover:text-amber-500
-          "
-          />
+          <div className="relative group hidden md:block">
+            <FaUser className="cursor-pointer text-lg hover:text-amber-500" />
 
-          
+            <div className="absolute right-0 mt-2 w-40 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition">
+              {user ? (
+                <>
+                  <p className="px-4 py-2 text-sm border-b border-slate-200 dark:border-slate-800">
+                    Hi, {user.name}
+                  </p>
+
+                  <button
+                    onClick={() => {
+                      signout();
+                      navigate("/");
+                    }}
+                    className="w-full text-left px-4 py-2 text-sm hover:bg-slate-100 dark:hover:bg-slate-800"
+                  >
+                    Sign Out
+                  </button>
+                </>
+              ) : (
+                <>
+                  <button
+                    onClick={() => navigate("/signin")}
+                    className="w-full text-left px-4 py-2 text-sm hover:bg-slate-100 dark:hover:bg-slate-800"
+                  >
+                    Sign In
+                  </button>
+
+                  <button
+                    onClick={() => navigate("/signup")}
+                    className="w-full text-left px-4 py-2 text-sm hover:bg-slate-100 dark:hover:bg-slate-800"
+                  >
+                    Sign Up
+                  </button>
+                </>
+              )}
+            </div>
+          </div>
+
           <button
             onClick={toggleCart}
             className="

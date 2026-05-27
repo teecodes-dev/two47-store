@@ -5,6 +5,34 @@ import { useCart } from "../Context/CartContext";
 const ProductCard = ({ product, pageTitle }) => {
   const { addToCart } = useCart();
 
+  // ================= TAG LABEL =================
+  const getTagLabel = () => {
+    if (pageTitle) return pageTitle;
+
+    if (product.tags?.includes("best-seller")) return "Best Seller";
+    if (product.tags?.includes("new-arrival")) return "New Arrival";
+    if (product.tags?.includes("essentials")) return "Essentials";
+
+    return "Collection";
+  };
+
+  // ================= TAG COLOR SYSTEM =================
+  const getTagColor = () => {
+    if (product.tags?.includes("essentials")) {
+      return "bg-blue-500 text-white"; // ✅ ESSENTIALS = BLUE
+    }
+
+    if (product.tags?.includes("best-seller")) {
+      return "bg-amber-500 text-black";
+    }
+
+    if (product.tags?.includes("new-arrival")) {
+      return "bg-green-500 text-black";
+    }
+
+    return "bg-slate-700 text-white";
+  };
+
   return (
     <div
       className="
@@ -20,49 +48,35 @@ const ProductCard = ({ product, pageTitle }) => {
         max-w-[320px]
       "
     >
-      {/* Wishlist */}
+      {/* WISHLIST */}
       <button
         className="
           absolute top-3 right-3 z-20
           bg-black/50 backdrop-blur-md
           p-2 rounded-full
-          text-white hover:text-red-500
+          text-white
+          hover:text-red-500
           transition
         "
       >
         <Heart size={16} />
       </button>
 
-      {/* TAG BADGES */}
-      <div className="absolute top-3 left-3 z-20 flex flex-wrap gap-2">
-        {pageTitle ? (
-          <span className="bg-amber-500 text-black text-[10px] font-semibold px-2 py-1 rounded-full">
-            {pageTitle}
-          </span>
-        ) : (
-          <>
-            {product.tags?.includes("best-seller") && (
-              <span className="bg-amber-500 text-black text-[10px] font-semibold px-2 py-1 rounded-full">
-                Best Seller
-              </span>
-            )}
-
-            {product.tags?.includes("new-arrival") && (
-              <span className="bg-green-500 text-white text-[10px] font-semibold px-2 py-1 rounded-full">
-                New Arrival
-              </span>
-            )}
-
-            {product.tags?.includes("essentials") && (
-              <span className="bg-blue-500 text-white text-[10px] font-semibold px-2 py-1 rounded-full">
-                Essentials
-              </span>
-            )}
-          </>
-        )}
+      {/* TAG BADGE */}
+      <div
+        className={`
+          absolute top-3 left-3 z-20
+          text-[10px]
+          font-semibold
+          px-2 py-1
+          rounded-full
+          ${getTagColor()}
+        `}
+      >
+        {getTagLabel()}
       </div>
 
-      {/* PRODUCT LINK */}
+      {/* IMAGE + LINK */}
       <Link to={`/product/${product.id}`}>
         <div className="overflow-hidden">
           <img
@@ -86,6 +100,7 @@ const ProductCard = ({ product, pageTitle }) => {
             {product.name}
           </h3>
 
+          {/* STARS */}
           <div className="flex items-center gap-1 mt-2">
             {[...Array(5)].map((_, index) => (
               <Star
@@ -97,6 +112,7 @@ const ProductCard = ({ product, pageTitle }) => {
             <span className="text-slate-400 text-xs ml-1">(4.9)</span>
           </div>
 
+          {/* PRICE */}
           <div className="flex items-center gap-2 mt-3">
             <p className="text-amber-400 text-base font-bold">
               ₦{product.price.toLocaleString()}
@@ -115,7 +131,8 @@ const ProductCard = ({ product, pageTitle }) => {
           className="
             w-full flex items-center justify-center gap-2
             bg-amber-500 hover:bg-amber-600
-            text-black py-3 rounded-xl
+            text-black
+            py-3 rounded-xl
             transition-all duration-300
             font-semibold text-sm
             hover:scale-[1.01]
