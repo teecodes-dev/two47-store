@@ -20,13 +20,10 @@ function ProductDetailsPage() {
 
   return (
     <div className="min-h-screen bg-white text-slate-900 dark:bg-slate-950 dark:text-white">
-      {/* NAVBAR */}
       <Navbar />
 
-      {/* PRODUCT */}
       <section className="max-w-7xl mx-auto px-6 py-20">
         <div className="grid md:grid-cols-2 gap-12">
-          {/* IMAGE */}
           <div>
             <img
               src={product.image}
@@ -35,28 +32,22 @@ function ProductDetailsPage() {
             />
           </div>
 
-          {/* INFO */}
           <div className="space-y-8">
-            {/* Collection */}
             <p className="text-amber-400 uppercase tracking-[0.3em] text-xs">
               {product.collection}
             </p>
 
-            {/* Name */}
             <h1 className="text-4xl md:text-5xl font-bold">{product.name}</h1>
 
-            {/* Price */}
             <p className="text-2xl font-semibold text-amber-500">
               ₦{product.price.toLocaleString()}
             </p>
 
-            {/* Description */}
             <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
               Designed for confidence, comfort, and timeless expression. Every
-              JMK piece is crafted with premium materials and clean detailing.
+              Two47 piece is crafted with premium materials and clean detailing.
             </p>
 
-            {/* Sizes */}
             <div>
               <h3 className="font-semibold mb-4">Select Size</h3>
 
@@ -78,7 +69,6 @@ function ProductDetailsPage() {
               </div>
             </div>
 
-            {/* Actions */}
             <div className="flex gap-4 flex-wrap">
               <button
                 className="
@@ -110,8 +100,7 @@ function ProductDetailsPage() {
           </div>
         </div>
       </section>
-
-      {/* FOOTER */}
+      
       <Footer />
     </div>
   );

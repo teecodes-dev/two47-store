@@ -27,9 +27,9 @@ const HomePage = () => {
 
       <FeaturedCollections />
 
-      <NewArrivals />
+      <NewArrivals limit={4} />
 
-      <BestSellers />
+      <BestSellers limit={4} />
 
       <section
         className="
@@ -60,7 +60,7 @@ const HomePage = () => {
           mx-auto
         "
         >
-          JMK is more than a store, it is a refined collection of premium
+          Two47 is more than a store, it is a refined collection of premium
           essentials designed for style, confidence, and identity.
         </p>
       </section>
@@ -106,7 +106,6 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* FOOTER */}
       <Footer />
     </div>
   );

@@ -8,8 +8,9 @@ import { useCart } from "../Context/CartContext";
 import { useTheme } from "../Context/ThemeContext";
 
 function Navbar() {
-  const { cartCount, openCart } = useCart();
+  const { cartCount, toggleCart } = useCart();
   const { isDark, toggleTheme } = useTheme();
+  
 
   return (
     <nav
@@ -42,7 +43,7 @@ function Navbar() {
         md:px-10
       "
       >
-        {/* LEFT */}
+        
         <div className="flex items-center gap-4">
           <MdMenu
             className="
@@ -54,7 +55,7 @@ function Navbar() {
           "
           />
 
-          {/* JMK Logo */}
+          
           <Link
             to="/"
             className="
@@ -92,7 +93,7 @@ function Navbar() {
           </Link>
         </div>
 
-        {/* CENTER */}
+        
         <ul
           className="
           hidden
@@ -104,7 +105,7 @@ function Navbar() {
         "
         >
           <Link
-            to="/shop"
+            to="/new-arrivals"
             className="
               transition-transform
               hover:scale-110
@@ -115,7 +116,7 @@ function Navbar() {
           </Link>
 
           <Link
-            to="/shop"
+            to="/collections"
             className="
               transition-transform
               hover:scale-110
@@ -126,7 +127,7 @@ function Navbar() {
           </Link>
 
           <Link
-            to="/shop"
+            to="/best-sellers"
             className="
               transition-transform
               hover:scale-110
@@ -137,7 +138,7 @@ function Navbar() {
           </Link>
 
           <Link
-            to="/shop"
+            to="/essentials"
             className="
               transition-transform
               hover:scale-110
@@ -148,7 +149,7 @@ function Navbar() {
           </Link>
         </ul>
 
-        {/* RIGHT */}
+        
         <div
           className="
           flex
@@ -158,7 +159,7 @@ function Navbar() {
           font-medium
         "
         >
-          {/* About */}
+          
           <Link
             to="/about"
             className="
@@ -172,7 +173,7 @@ function Navbar() {
             About
           </Link>
 
-          {/* Contact */}
+          
           <Link
             to="/contact"
             className="
@@ -186,7 +187,7 @@ function Navbar() {
             Contact
           </Link>
 
-          {/* Theme */}
+          
           <button
             onClick={toggleTheme}
             className="
@@ -198,7 +199,7 @@ function Navbar() {
             {isDark ? "☀️" : "🌙"}
           </button>
 
-          {/* User */}
+          
           <FaUser
             className="
             hidden
@@ -211,9 +212,9 @@ function Navbar() {
           "
           />
 
-          {/* Cart */}
+          
           <button
-            onClick={openCart}
+            onClick={toggleCart}
             className="
               relative
               cursor-pointer
@@ -231,7 +232,7 @@ function Navbar() {
                 -top-2
                 flex
                 h-5
-                w-5
+                w-6
                 items-center
                 justify-center
                 rounded-full
@@ -241,7 +242,7 @@ function Navbar() {
                 text-white
               "
               >
-                {cartCount}
+                {cartCount > 99 ? "99+" : cartCount}
               </span>
             )}
           </button>

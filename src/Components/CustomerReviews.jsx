@@ -36,7 +36,6 @@ const CustomerReviews = () => {
         </h2>
       </div>
 
-      {/* Reviews */}
       <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-6">
         {reviews.map((review, index) => (
           <motion.div

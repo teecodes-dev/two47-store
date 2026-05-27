@@ -49,7 +49,6 @@ const footerLinks = {
 const Footer = () => {
   return (
     <footer className="">
-      {/* Top */}
       <div className="max-w-7xl mx-auto px-6 py-20 grid grid-cols-2 md:grid-cols-5 gap-10">
         {Object.entries(footerLinks).map(([title, links]) => (
           <div key={title}>
@@ -69,11 +68,10 @@ const Footer = () => {
         ))}
       </div>
 
-      {/* Bottom */}
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between gap-4 text-sm text-slate-400">
           <p>
-            Nigeria • © {new Date().getFullYear()} JMK. All Rights Reserved.
+            Nigeria • © {new Date().getFullYear()} Two47. All Rights Reserved.
           </p>
 
           <div className="flex gap-6 flex-wrap">

@@ -6,19 +6,18 @@ import ProductCard from "./ProductCard";
 
 const FeaturedCollections = () => {
   const featuredProducts = products
-    .filter((product) => product.featured)
+    .filter((product) => product.tags.includes("featured"))
     .slice(0, 4);
 
   return (
     <section
       className="
-      py-24
-      px-6
-      max-w-7xl
-      mx-auto
-    "
+        py-24
+        px-6
+        max-w-7xl
+        mx-auto
+      "
     >
-      {/* Header */}
       <motion.div
         initial={{
           opacity: 0,
@@ -41,65 +40,63 @@ const FeaturedCollections = () => {
       >
         <p
           className="
-          text-amber-400
-          uppercase
-          tracking-[0.3em]
-          text-xs
-          mb-4
-        "
+            text-amber-400
+            uppercase
+            tracking-[0.3em]
+            text-xs
+            mb-4
+          "
         >
-          JMK Showcase
+          Two47 Showcase
         </p>
 
         <h2
           className="
-          text-3xl
-          md:text-5xl
-          font-bold
-        "
+            text-3xl
+            md:text-5xl
+            font-bold
+          "
         >
           Featured Collections
         </h2>
       </motion.div>
 
-      {/* Products */}
       <div
         className="
-        grid
-        grid-cols-1
-        sm:grid-cols-2
-        md:grid-cols-4
-        gap-6
-      "
+          grid
+          grid-cols-1
+          sm:grid-cols-2
+          md:grid-cols-4
+          gap-6
+        "
       >
         {featuredProducts.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
       </div>
 
-      {/* CTA */}
       <div
         className="
-        flex
-        justify-center
-        mt-14
-      "
+          flex
+          justify-center
+          mt-14
+        "
       >
-        <Link to="/shop">
+        <Link to="/collections">
           <button
             className="
-            border
-            border-slate-300
-            dark:border-slate-700
-            px-8
-            py-3
-            rounded-full
-            hover:bg-black
-            hover:text-white
-            dark:hover:bg-white
-            dark:hover:text-black
-            transition
-          "
+              border
+              border-slate-300
+              dark:border-slate-700
+              px-8
+              py-3
+              rounded-full
+              hover:bg-black
+              hover:text-white
+              dark:hover:bg-white
+              dark:hover:text-black
+              transition
+            "
           >
             View All Collections
           </button>

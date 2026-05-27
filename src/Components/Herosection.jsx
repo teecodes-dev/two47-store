@@ -57,7 +57,7 @@ const Herosection = () => {
           transition={{ duration: 1, delay: 0.8 }}
           className="mt-10 flex gap-4 justify-center flex-wrap"
         >
-          <Link to="/shop">
+          <Link to="/new-arrivals">
             <button
               className="
         bg-amber-500
@@ -76,7 +76,7 @@ const Herosection = () => {
             </button>
           </Link>
 
-          <Link to="/shop">
+          <Link to="/collections">
             <button
               className="
         border

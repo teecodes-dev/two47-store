@@ -1,9 +1,10 @@
 import React from "react";
 import { IoBagHandle } from "react-icons/io5";
 
-function CartButton({ count, onClick }) {
+function CartButton({ count, openCart }) {
+ 
   return (
-    <button onClick={onClick} className="relative cursor-pointer">
+    <button onClick={openCart} className="relative cursor-pointer">
       <IoBagHandle className="text-2xl" />
 
       {count > 0 && (

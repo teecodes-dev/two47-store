@@ -5,7 +5,7 @@ const ThemeContext = createContext();
 export const ThemeProvider = ({ children }) => {
   const [isDark, setIsDark] = useState(false);
 
-  // run once on mount
+  
   useEffect(() => {
     const saved = localStorage.getItem("reactmart-theme");
 
@@ -20,7 +20,7 @@ export const ThemeProvider = ({ children }) => {
     }
   }, []);
 
-  // sync changes
+  
   useEffect(() => {
     document.documentElement.classList.toggle("dark", isDark);
     localStorage.setItem("reactmart-theme", isDark ? "dark" : "light");
