@@ -18,7 +18,7 @@ export function CartProvider({ children }) {
   const [isOpen, setIsOpen] = useState(false);
   const [toast, setToast] = useState(null);
 
-  const toastRef = useRef(null); // ✅ ONLY ONCE
+  const toastRef = useRef(null);
 
   // 💾 Save cart
   useEffect(() => {
@@ -41,18 +41,24 @@ export function CartProvider({ children }) {
     }, 2000);
   };
 
-  // ➕ Add to cart
+  // ➕ Add to cart (FIXED VERSION)
   const addToCart = (product) => {
     const exists = cartItems.find((item) => item.id === product.id);
     const currentQty = exists ? exists.quantity : 0;
 
-    // 🚨 OUT OF STOCK CHECK FIRST (BEFORE ANYTHING)
-    if (product.stock === 0 || currentQty >= product.stock) {
-      showToast("Out of stock ❌", "error");
-      return;
+    // ✅ SAFE STOCK CHECK (prevents undefined crash)
+    if (product.stock !== undefined) {
+      if (product.stock === 0) {
+        showToast("Out of stock ❌", "error");
+        return;
+      }
+
+      if (currentQty >= product.stock) {
+        showToast("Stock limit reached ❌", "error");
+        return;
+      }
     }
 
-    // ✅ ONLY UPDATE CART IF VALID
     setCartItems((prev) => {
       if (exists) {
         return prev.map((item) =>
@@ -65,7 +71,6 @@ export function CartProvider({ children }) {
       return [...prev, { ...product, quantity: 1 }];
     });
 
-    // ✅ SUCCESS ONLY IF ACTUALLY ADDED
     showToast("Item added to cart ✔", "success");
   };
 
@@ -106,6 +111,10 @@ export function CartProvider({ children }) {
     [cartItems],
   );
 
+  const clearCart = () => {
+    setCartItems([]);
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -120,6 +129,7 @@ export function CartProvider({ children }) {
         increaseQty,
         decreaseQty,
         removeItem,
+        clearCart,
         toast,
         showToast,
       }}

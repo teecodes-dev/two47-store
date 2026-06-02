@@ -4,9 +4,7 @@ const footerLinks = {
     "Best Sellers",
     "Streetwear",
     "Essentials",
-    "Limited Edition",
-    "Accessories",
-    "Gift Cards",
+    "Collections",
   ],
 
   "Customer Care": [
@@ -14,51 +12,72 @@ const footerLinks = {
     "Shipping & Delivery",
     "Returns & Exchanges",
     "Payment Options",
-    "Size Guide",
     "FAQs",
     "Contact Us",
   ],
 
-  "About JMK": [
-    "Our Story",
-    "Journal",
-    "Careers",
-    "Press & Media",
-    "Wholesale",
-    "Sustainability",
-    "Community",
-  ],
-
-  Partnerships: [
-    "Corporate Orders",
-    "Brand Collaborations",
-    "Retail Partners",
-    "Influencer Program",
-    "Campus Ambassadors",
-  ],
-
-  Membership: [
-    "Join JMK Circle",
-    "Early Access",
-    "Exclusive Drops",
-    "Birthday Rewards",
-    "VIP Benefits",
-  ],
+  "About Two47": ["Our Story", "Wholesale", "Sustainability", "Community"],
 };
 
 const Footer = () => {
   return (
-    <footer className="">
-      <div className="max-w-7xl mx-auto px-6 py-20 grid grid-cols-2 md:grid-cols-5 gap-10">
+    <footer className="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
+      {/* TOP SECTION */}
+      <div
+        className="
+          max-w-7xl
+          mx-auto
+          px-6
+          lg:px-10
+          py-16
+          grid
+          grid-cols-1
+          md:grid-cols-2
+          lg:grid-cols-4
+          gap-12
+        "
+      >
+        {/* BRAND COLUMN */}
+        <div className="space-y-4">
+          <h2 className="text-3xl font-bold italic">
+            <span className="text-amber-500">Two</span>
+            <span className="text-slate-900 dark:text-white">4</span>
+            <span className="text-amber-500">7</span>
+          </h2>
+
+          <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed max-w-xs">
+            Premium streetwear crafted for confidence, comfort, and timeless
+            expression.
+          </p>
+        </div>
+
+        {/* LINKS */}
         {Object.entries(footerLinks).map(([title, links]) => (
           <div key={title}>
-            <h3 className="font-semibold mb-6 text-amber-400">{title}</h3>
+            <h3
+              className="
+                text-base
+                font-semibold
+                mb-4
+                text-amber-500
+              "
+            >
+              {title}
+            </h3>
 
             <ul className="space-y-3">
               {links.map((link) => (
                 <li
                   key={link}
-                  className="text-sm text-black hover:text-slate-40 dark:text-white cursor-pointer transition"
+                  className="
+                    text-sm
+                    text-slate-600
+                    dark:text-slate-400
+                    hover:text-amber-500
+                    cursor-pointer
+                    transition-colors
+                    duration-300
+                  "
                 >
                   {link}
                 </li>
@@ -68,18 +87,50 @@ const Footer = () => {
         ))}
       </div>
 
-      <div className="border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between gap-4 text-sm text-slate-400">
+      {/* BOTTOM SECTION */}
+      <div className="border-t border-slate-200 dark:border-slate-800">
+        <div
+          className="
+            max-w-7xl
+            mx-auto
+            px-6
+            lg:px-10
+            py-5
+            flex
+            flex-col
+            md:flex-row
+            items-center
+            justify-between
+            gap-4
+            text-sm
+            text-slate-500
+            dark:text-slate-400
+          "
+        >
           <p>
             Nigeria • © {new Date().getFullYear()} Two47. All Rights Reserved.
           </p>
 
-          <div className="flex gap-6 flex-wrap">
-            <span>Terms</span>
-            <span>Privacy</span>
-            <span>Shipping</span>
-            <span>Returns</span>
-            <span>Accessibility</span>
+          <div className="flex flex-wrap gap-6">
+            <span className="hover:text-amber-500 cursor-pointer transition">
+              Terms
+            </span>
+
+            <span className="hover:text-amber-500 cursor-pointer transition">
+              Privacy
+            </span>
+
+            <span className="hover:text-amber-500 cursor-pointer transition">
+              Shipping
+            </span>
+
+            <span className="hover:text-amber-500 cursor-pointer transition">
+              Returns
+            </span>
+
+            <span className="hover:text-amber-500 cursor-pointer transition">
+              Accessibility
+            </span>
           </div>
         </div>
       </div>

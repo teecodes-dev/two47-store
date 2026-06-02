@@ -5,25 +5,33 @@ import Footer from "../Components/Footer";
 
 import { products } from "../Data/products";
 
+import { useCart } from "../Context/CartContext";
+import { useWishlist } from "../Context/WishlistContext";
+
 function ProductDetailsPage() {
   const { id } = useParams();
 
   const product = products.find((item) => item.id === Number(id));
 
+  const { addToCart } = useCart();
+
+  const { toggleWishlist, isInWishlist } = useWishlist();
+
   if (!product) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center bg-white dark:bg-slate-950 text-slate-900 dark:text-white">
         Product not found.
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 dark:bg-slate-950 dark:text-white">
+    <div className="min-h-screen bg-white text-slate-900 dark:bg-slate-950 dark:text-white transition-colors duration-300">
       <Navbar />
 
       <section className="max-w-7xl mx-auto px-6 py-20">
         <div className="grid md:grid-cols-2 gap-12">
+          {/* PRODUCT IMAGE */}
           <div>
             <img
               src={product.image}
@@ -32,6 +40,7 @@ function ProductDetailsPage() {
             />
           </div>
 
+          {/* PRODUCT INFO */}
           <div className="space-y-8">
             <p className="text-amber-400 uppercase tracking-[0.3em] text-xs">
               {product.collection}
@@ -48,20 +57,25 @@ function ProductDetailsPage() {
               Two47 piece is crafted with premium materials and clean detailing.
             </p>
 
+            {/* SIZE SELECT */}
             <div>
               <h3 className="font-semibold mb-4">Select Size</h3>
 
-              <div className="flex gap-3">
+              <div className="flex gap-3 flex-wrap">
                 {["S", "M", "L", "XL"].map((size) => (
                   <button
                     key={size}
                     className="
-                        border
-                        px-5 py-3
-                        rounded-xl
-                        hover:border-amber-500
-                        transition
-                      "
+                      border
+                      border-slate-300
+                      dark:border-slate-700
+                      px-5
+                      py-3
+                      rounded-xl
+                      hover:border-amber-500
+                      hover:text-amber-500
+                      transition
+                    "
                   >
                     {size}
                   </button>
@@ -69,38 +83,47 @@ function ProductDetailsPage() {
               </div>
             </div>
 
+            {/* ACTION BUTTONS */}
             <div className="flex gap-4 flex-wrap">
+              {/* ADD TO CART */}
               <button
+                onClick={() => addToCart(product)}
                 className="
-                bg-amber-500
-                hover:bg-amber-600
-                text-white
-                px-10 py-4
-                rounded-full
-                font-semibold
-                transition
-              "
+                  bg-amber-500
+                  hover:bg-amber-600
+                  text-white
+                  px-10
+                  py-4
+                  rounded-full
+                  font-semibold
+                  transition
+                "
               >
                 Add To Cart
               </button>
 
+              {/* WISHLIST */}
               <button
+                onClick={() => toggleWishlist(product)}
                 className="
-                border
-                px-10 py-4
-                rounded-full
-                hover:bg-slate-100
-                dark:hover:bg-slate-800
-                transition
-              "
+                  border
+                  border-slate-300
+                  dark:border-slate-700
+                  px-10
+                  py-4
+                  rounded-full
+                  hover:bg-slate-100
+                  dark:hover:bg-slate-800
+                  transition
+                "
               >
-                Save
+                {isInWishlist(product.id) ? "Saved ❤️" : "Save"}
               </button>
             </div>
           </div>
         </div>
       </section>
-      
+
       <Footer />
     </div>
   );

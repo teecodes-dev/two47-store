@@ -1,5 +1,6 @@
 import { useCart } from "../Context/CartContext";
 import { MdClose } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 function CartSidebar() {
   const {
@@ -12,7 +13,7 @@ function CartSidebar() {
     removeItem,
   } = useCart();
 
-  console.log("Cart isOpen:", isOpen);
+  const navigate = useNavigate();
 
   return (
     <>
@@ -35,8 +36,8 @@ function CartSidebar() {
         className={`
           fixed top-0 right-0 h-full w-96 bg-white shadow-2xl z-50
           transform transition-transform duration-300 ease-in-out
-        dark:bg-slate-950
-        dark:text-slate-100
+          dark:bg-slate-950
+          dark:text-slate-100
           ${isOpen ? "translate-x-0" : "translate-x-full"}
         `}
       >
@@ -86,13 +87,16 @@ function CartSidebar() {
 
         {/* FOOTER */}
         {cartItems.length > 0 && (
-          <div
-            className="absolute bottom-0 w-full p-4 border-t bg-white dark:bg-slate-950
-        dark:text-slate-100"
-          >
+          <div className="absolute bottom-0 w-full p-4 border-t bg-white dark:bg-slate-950 dark:text-slate-100">
             <h3 className="font-bold">Total: ₦{totalPrice.toLocaleString()}</h3>
 
-            <button className="w-full mt-3 bg-amber-500 hover:bg-amber-600 text-white py-2 rounded">
+            <button
+              onClick={() => {
+                closeCart();
+                navigate("/checkout");
+              }}
+              className="w-full mt-3 bg-amber-500 hover:bg-amber-600 text-white py-2 rounded"
+            >
               Checkout
             </button>
           </div>

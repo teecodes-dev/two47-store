@@ -33,7 +33,12 @@ const SignIn = () => {
       return;
     }
 
-    navigate("/");
+    // 👑 ADMIN AUTO REDIRECT LOGIC (NEW ADDITION ONLY)
+    if (res.user?.role === "admin") {
+      navigate("/admin");
+    } else {
+      navigate("/");
+    }
   };
 
   return (
