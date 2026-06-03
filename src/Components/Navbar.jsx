@@ -142,11 +142,11 @@ function Navbar() {
             )}
           </button>
 
-          {user?.role === "admin" && (
+          {/* {user?.role === "admin" && (
             <Link to="/admin" className="hidden md:block hover:text-red-500">
               Admin Panel
             </Link>
-          )}
+          )} */}
         </div>
       </div>
     </nav>

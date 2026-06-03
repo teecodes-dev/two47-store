@@ -1,50 +1,13 @@
-// import React from "react";
-// import SortDropdown from "./SortDropdown";
-
-// const CategoryFilter = () => {
-//   return (
-//     <section className="flex justify-between">
-//       <div>
-//         <h2 className="text-gray-600 mb-3">FILTER BY CATEGORY</h2>
-//         <div className="space-x-3">
-//           <button className="border border-gray-500 rounded-2xl py-1 px-4 bg-orange-600">
-//             All
-//           </button>
-//           <button className="border border-gray-500 rounded-2xl py-1 px-4 bg-orange-500">
-//             Men
-//           </button>
-//           <button className="border border-gray-500 rounded-2xl py-1 px-4 bg-orange-400">
-//             Women
-//           </button>
-//           <button className="border border-gray-500 rounded-2xl py-1 px-4 bg-orange-300">
-//             Accessories
-//           </button>
-//           <button className="border border-gray-500 rounded-2xl py-1 px-4 bg-orange-200">
-//             Shoes
-//           </button>
-//           <button className="border border-gray-500 rounded-2xl py-1 px-4 bg-orange-100">
-//             Bags
-//           </button>
-//         </div>
-//       </div>
-//       <div>
-//         <SortDropdown/>
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default CategoryFilter;
 
 function CategoryFilter({ selectedCategory, onSelectCategory }) {
   const categories = [
     "All",
-    "Electronics",
-    "Fashion",
-    "Furniture",
-    "Beauty",
-    "Sports",
-    "Accessories",
+    "Shirts",
+    "Hoodies",
+    "Footwear",
+    "Cap",
+    "Joggers",
+    "Trousers",
   ];
 
   return (

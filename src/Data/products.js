@@ -69,32 +69,31 @@ import cap13 from "../assets/cap13.avif";
 export const products = [
   {
     id: 1,
-    name: "Oversized Tee",
+    name: "Blue Denim Trousers ",
     price: 25000,
-    collection: "streetwear",
-    tags: [],
-    category: "new-drop",
+    tags: ["essentials"],
+    category: "trousers",
     image: baggyT1,
     stock: 0,
   },
 
   {
     id: 2,
-    name: "JMK Signature Hoodie",
-    price: 45000,
-    category: "Electronic",
+    name: "Casual Sleeveless Top Men's T-Shirt",
+    price: 15000,
     collection: "essentials",
     tags: ["new-arrival"],
+    category: "Shirts",
     stock: 20,
     image: armless1,
   },
 
   {
     id: 3,
-    name: "JMK Cargo Pants",
-    price: 35000,
-    category: "classic",
-    collection: "limited-edition",
+    name: "Vintage Soft-Top Cap",
+    price: 10000,
+    category: "Cap",
+    // collection: "limited-edition",
     tags: ["best-seller"],
     stock: 20,
     image: cap1,
@@ -102,10 +101,10 @@ export const products = [
 
   {
     id: 4,
-    name: "JMK Premium Jacket",
-    price: 65000,
-    category: "new-drop",
-    collection: "streetwear",
+    name: "Fashion Hoodie, Unisex Hooded Sweatshirt",
+    price: 20000,
+    category: "Hoodies",
+    // collection: "streetwear",
     tags: ["essentials"],
     stock: 20,
     image: hoddie1,
@@ -113,10 +112,10 @@ export const products = [
 
   {
     id: 5,
-    name: "JMK Premium Jacket",
-    price: 65000,
-    category: "new-drop",
-    collection: "streetwear",
+    name: "Fashionable And Popular Casual Sneakers",
+    price: 18000,
+    category: "Footwear",
+    // collection: "streetwear",
     tags: ["new-arrival"],
     stock: 20,
     image: sneaker1,
@@ -124,10 +123,10 @@ export const products = [
 
   {
     id: 6,
-    name: "JMK Oversized Tee",
+    name: "Men'S Casual Suit",
     price: 25000,
-    category: "new-drop",
-    collection: "streetwear",
+    category: "Shirts",
+    // collection: "streetwear",
     tags: ["best-seller"],
     stock: 20,
     image: upd1,
@@ -135,10 +134,10 @@ export const products = [
 
   {
     id: 7,
-    name: "JMK Signature Hoodie",
-    price: 45000,
-    category: "new-drop",
-    collection: "essentials",
+    name: " Casual Jacket",
+    price: 30000,
+    category: "Shirts",
+    // collection: "essentials",
     tags: ["essentials"],
     stock: 20,
     image: shirt1,
@@ -146,10 +145,10 @@ export const products = [
 
   {
     id: 8,
-    name: "JMK Cargo Pants",
-    price: 35000,
-    category: "classic",
-    collection: "limited-edition",
+    name: " Casual Trouser, wide-leg Long Pant",
+    price: 20000,
+    category: "Trousers",
+    // collection: "limited-edition",
     tags: ["new-arrival"],
     stock: 20,
     image: baggyT2,
@@ -157,10 +156,10 @@ export const products = [
 
   {
     id: 9,
-    name: "JMK Premium Jacket",
-    price: 65000,
-    category: "new-drop",
-    collection: "streetwear",
+    name: "Colored Knitted Short Sleeve Shirt",
+    price: 25000,
+    category: "Shirts",
+    // collection: "streetwear",
     tags: ["best-seller"],
     stock: 20,
     image: shirt2a,
@@ -168,10 +167,10 @@ export const products = [
 
   {
     id: 10,
-    name: "JMK Premium Jacket",
-    price: 65000,
-    category: "new-drop",
-    collection: "streetwear",
+    name: "Faded And Worn Look Baseball Cap",
+    price: 7000,
+    category: "Cap",
+    // collection: "streetwear",
     tags: ["essentials"],
     stock: 20,
     image: cap2,
@@ -179,10 +178,10 @@ export const products = [
 
   {
     id: 11,
-    name: "JMK Oversized Tee",
+    name: "Casual Comfortable Thickened Hoodie & Hooded Sweatshirt",
     price: 25000,
-    category: "new-drop",
-    collection: "streetwear",
+    category: "Hoodies",
+    // collection: "streetwear",
     tags: ["new-arrival"],
     stock: 20,
     image: hoddie2,
@@ -190,10 +189,10 @@ export const products = [
 
   {
     id: 12,
-    name: "JMK Signature Hoodie",
-    price: 45000,
-    category: "new-drop",
-    collection: "essentials",
+    name: "Outdoor Casual Black Sneakers",
+    price: 30000,
+    category: "Footwear",
+    // collection: "essentials",
     tags: ["best-seller"],
     stock: 20,
     image: sneaker2,
@@ -201,10 +200,10 @@ export const products = [
 
   {
     id: 13,
-    name: "JMK Cargo Pants",
+    name: "Men'S Casual Suit",
     price: 35000,
-    category: "classic",
-    collection: "limited-edition",
+    category: "Trousers",
+    // collection: "limited-edition",
     tags: ["essentials"],
     stock: 20,
     image: upd2,
@@ -212,10 +211,10 @@ export const products = [
 
   {
     id: 14,
-    name: "JMK Premium Jacket",
-    price: 65000,
-    category: "new-drop",
-    collection: "streetwear",
+    name: "Trendy Corduroy Pant Trouser",
+    price: 22500,
+    category: "Trousers",
+    // collection: "streetwear",
     tags: ["new-arrival"],
     stock: 20,
     image: baggyT3a,
@@ -223,10 +222,10 @@ export const products = [
 
   {
     id: 15,
-    name: "JMK Premium Jacket",
-    price: 65000,
-    category: "new-drop",
-    collection: "streetwear",
+    name: "Black Coloured Polo Shirt with a Collar",
+    price: 45000,
+    category: "Shirts",
+    // collection: "streetwear",
     tags: ["best-seller"],
     stock: 20,
     image: shirt2b,
@@ -234,10 +233,10 @@ export const products = [
 
   {
     id: 16,
-    name: "JMK Oversized Tee",
-    price: 25000,
-    category: "new-drop",
-    collection: "streetwear",
+    name: " Ripped Design Comfortable & Adjustable Sun Cap",
+    price: 5000,
+    category: "Cap",
+    // collection: "streetwear",
     tags: ["essentials"],
     stock: 20,
     image: cap3,
@@ -245,10 +244,10 @@ export const products = [
 
   {
     id: 17,
-    name: "JMK Signature Hoodie",
+    name: "Signature Hoodie",
     price: 45000,
-    category: "new-drop",
-    collection: "essentials",
+    category: "Hoodies",
+    // collection: "essentials",
     tags: ["new-arrival"],
     stock: 20,
     image: hoddie3,
@@ -256,10 +255,10 @@ export const products = [
 
   {
     id: 18,
-    name: "JMK Cargo Pants",
-    price: 35000,
-    category: "classic",
-    collection: "limited-edition",
+    name: " White Lightweight & Comfortable sneakers",
+    price: 13000,
+    category: "Footwear",
+    // collection: "limited-edition",
     tags: ["best-seller"],
     stock: 20,
     image: sneaker3,
@@ -267,10 +266,10 @@ export const products = [
 
   {
     id: 19,
-    name: "JMK Premium Jacket",
-    price: 65000,
-    category: "new-drop",
-    collection: "streetwear",
+    name: "Lapel Short Sleeve & Long Pant Set, Casual Leisure Outfit",
+    price: 37000,
+    category: "Shirts",
+    // collection: "streetwear",
     tags: ["essentials"],
     stock: 20,
     image: upd3,
@@ -278,10 +277,10 @@ export const products = [
 
   {
     id: 20,
-    name: "JMK Premium Jacket",
-    price: 65000,
-    category: "new-drop",
-    collection: "streetwear",
+    name: "Loose Fit Joggers",
+    price: 21000,
+    category: "Joggers",
+    // collection: "streetwear",
     tags: ["new-arrival"],
     stock: 20,
     image: baggyT3b,
@@ -289,10 +288,10 @@ export const products = [
 
   {
     id: 21,
-    name: "JMK Oversized Tee",
-    price: 25000,
-    category: "new-drop",
-    collection: "streetwear",
+    name: " Perfect Outdoor Polo Shirt ",
+    price: 27000,
+    category: "Shirts",
+    // collection: "streetwear",
     tags: ["best-seller"],
     stock: 20,
     image: shirt2c,
