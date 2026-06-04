@@ -63,15 +63,19 @@ function CartSidebar() {
                 </p>
 
                 <div className="flex gap-2 items-center mt-2">
-                  <button onClick={() => decreaseQty(item.id)}>-</button>
+                  <button onClick={() => decreaseQty(item.id, item.size)}>
+                    -
+                  </button>
 
                   <span>{item.quantity}</span>
 
-                  <button onClick={() => increaseQty(item.id)}>+</button>
+                  <button onClick={() => increaseQty(item.id, item.size)}>
+                    +
+                  </button>
 
                   <button
                     className="ml-auto text-red-500"
-                    onClick={() => removeItem(item.id)}
+                    onClick={() => removeItem(item.id, item.size)}
                   >
                     remove
                   </button>
@@ -80,7 +84,7 @@ function CartSidebar() {
             ))
           )}
         </div>
-        
+
         {cartItems.length > 0 && (
           <div className="absolute bottom-0 w-full p-4 border-t bg-white dark:bg-slate-950 dark:text-slate-100">
             <h3 className="font-bold">Total: ₦{totalPrice.toLocaleString()}</h3>
