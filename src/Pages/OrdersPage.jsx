@@ -31,7 +31,6 @@ function OrdersPage() {
     );
 
     localStorage.setItem("orders", JSON.stringify(remainingOrders));
-
     setOrders([]);
   };
 
@@ -40,11 +39,9 @@ function OrdersPage() {
       <Navbar />
 
       <div className="max-w-5xl mx-auto px-6 py-16">
-        {/* HEADER */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
           <div>
             <h1 className="text-3xl font-bold">My Orders</h1>
-
             <p className="text-slate-500 text-sm mt-1">
               View your order history and tracking information
             </p>
@@ -60,11 +57,9 @@ function OrdersPage() {
           )}
         </div>
 
-        {/* EMPTY STATE */}
         {orders.length === 0 ? (
           <div className="text-center py-20">
             <h2 className="text-2xl font-semibold">No Orders Yet 🛒</h2>
-
             <p className="text-slate-500 mt-2">
               Your completed orders will appear here.
             </p>
@@ -76,7 +71,6 @@ function OrdersPage() {
                 key={order.id}
                 className="border border-slate-200 dark:border-slate-800 rounded-xl p-5"
               >
-                {/* TOP */}
                 <div className="flex justify-between items-start mb-4">
                   <div>
                     <h2 className="font-semibold text-lg">
@@ -105,11 +99,10 @@ function OrdersPage() {
                   </span>
                 </div>
 
-                {/* ORDER INFO */}
+                
                 <div className="grid md:grid-cols-2 gap-4 text-sm mb-5">
                   <div>
                     <p className="text-slate-500">Customer</p>
-
                     <p className="font-medium">
                       {order.customer?.firstName} {order.customer?.lastName}
                     </p>
@@ -117,7 +110,6 @@ function OrdersPage() {
 
                   <div>
                     <p className="text-slate-500">Payment Method</p>
-
                     <p className="font-medium capitalize">
                       {order.paymentMethod}
                     </p>
@@ -125,7 +117,6 @@ function OrdersPage() {
 
                   <div>
                     <p className="text-slate-500">Order Date</p>
-
                     <p className="font-medium">
                       {new Date(order.date).toLocaleDateString()}
                     </p>
@@ -133,19 +124,28 @@ function OrdersPage() {
 
                   <div>
                     <p className="text-slate-500">Estimated Delivery</p>
-
                     <p className="font-medium">2 - 5 Business Days</p>
                   </div>
                 </div>
 
-                {/* ITEMS */}
+                
                 <div className="border-t border-slate-200 dark:border-slate-800 pt-4 space-y-3">
                   <h3 className="font-medium mb-2">Order Items</h3>
 
-                  {order.items.map((item) => (
-                    <div key={item.id} className="flex justify-between text-sm">
+                  {order.items.map((item, i) => (
+                    <div
+                      key={`${item.id}-${item.size || i}`}
+                      className="flex justify-between text-sm"
+                    >
                       <span>
-                        {item.name} × {item.quantity}
+                        {item.name}
+                        {item.size && (
+                          <span className="text-slate-500">
+                            {" "}
+                            (Size: {item.size})
+                          </span>
+                        )}{" "}
+                        × {item.quantity}
                       </span>
 
                       <span>
@@ -155,7 +155,7 @@ function OrdersPage() {
                   ))}
                 </div>
 
-                {/* TOTAL */}
+                
                 <div className="border-t border-slate-200 dark:border-slate-800 mt-4 pt-4 flex justify-between items-center">
                   <span className="font-semibold">Order Total</span>
 

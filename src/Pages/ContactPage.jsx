@@ -6,7 +6,6 @@ const ContactPage = () => {
     <div className="min-h-screen bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300">
       <Navbar />
 
-      {/* HERO */}
       <section className="text-center py-24 px-6 max-w-5xl mx-auto">
         <p className="text-amber-400 uppercase tracking-[0.3em] text-sm mb-4">
           Contact Two47
@@ -22,16 +21,20 @@ const ContactPage = () => {
         </p>
       </section>
 
-      {/* SUPPORT OPTIONS */}
       <section className="max-w-6xl mx-auto px-6 py-12 grid md:grid-cols-3 gap-6">
         <div className="p-6 rounded-2xl bg-slate-100 dark:bg-slate-900 text-center">
           <h3 className="text-xl font-bold mb-3">Live Support</h3>
           <p className="text-sm text-slate-600 dark:text-slate-400">
             Chat with our support team for real-time assistance.
           </p>
-          <button className="mt-4 px-6 py-2 bg-amber-500 text-white rounded-full">
+          <a
+            href="https://wa.me/2347034130016"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block mt-4 px-6 py-2 bg-amber-500 text-white rounded-full"
+          >
             Start Chat
-          </button>
+          </a>
         </div>
 
         <div className="p-6 rounded-2xl bg-slate-100 dark:bg-slate-900 text-center">
@@ -47,11 +50,10 @@ const ContactPage = () => {
           <p className="text-sm text-slate-600 dark:text-slate-400">
             Speak directly with our support team during working hours.
           </p>
-          <p className="mt-4 text-amber-500 font-medium">+234 XXX XXX XXXX</p>
+          <p className="mt-4 text-amber-500 font-medium">+234 703 413 0016</p>
         </div>
       </section>
 
-      {/* HELP TOPICS (Temu-style FAQ grid but cleaner) */}
       <section className="max-w-6xl mx-auto px-6 py-12">
         <h2 className="text-2xl md:text-4xl font-bold text-center mb-10">
           Help Center
@@ -61,10 +63,10 @@ const ContactPage = () => {
           {[
             "Orders & Tracking",
             "Shipping & Delivery",
-            "Returns & Refunds",
+            "Returns & Exchanges",
             "Payments & Security",
             "Product & Sizing",
-            "Account Management",
+            "Promotions & Discounts",
           ].map((item) => (
             <div
               key={item}
@@ -76,7 +78,6 @@ const ContactPage = () => {
         </div>
       </section>
 
-      {/* BRAND SUPPORT STRIP */}
       <section className="py-12 bg-slate-900 text-white dark:bg-white dark:text-slate-900 text-center">
         <h2 className="text-2xl md:text-3xl font-bold">
           Fast Support. Real People. Real Help.
@@ -87,8 +88,7 @@ const ContactPage = () => {
           handled with priority and care.
         </p>
       </section>
-
-      {/* FOOTER */}
+      
       <Footer />
     </div>
   );

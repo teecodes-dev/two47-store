@@ -14,6 +14,7 @@ function Navbar() {
   const { isDark, toggleTheme } = useTheme();
   const { user, signout } = useAuth();
   const navigate = useNavigate();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <nav
@@ -24,9 +25,11 @@ function Navbar() {
     "
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-10">
-        {/* LEFT */}
         <div className="flex items-center gap-4">
-          <MdMenu className="cursor-pointer text-2xl lg:hidden" />
+          <MdMenu
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="cursor-pointer text-2xl lg:hidden"
+          />
 
           <Link to="/" className="italic text-3xl font-bold tracking-wide">
             <span className="text-amber-500">Two</span>
@@ -35,7 +38,6 @@ function Navbar() {
           </Link>
         </div>
 
-        {/* CENTER NAV */}
         <ul className="hidden items-center gap-8 text-sm font-medium lg:flex">
           <Link to="/new-arrivals" className="hover:text-amber-500">
             New Arrivals
@@ -51,7 +53,6 @@ function Navbar() {
           </Link>
         </ul>
 
-        {/* RIGHT SIDE */}
         <div className="flex items-center gap-5 text-sm font-medium">
           <Link to="/about" className="hidden md:block hover:text-amber-500">
             About
@@ -65,8 +66,7 @@ function Navbar() {
             {isDark ? "☀️" : "🌙"}
           </button>
 
-          {/* USER DROPDOWN */}
-          <div className="relative group hidden md:block">
+          <div className="relative group">
             <FaUser className="cursor-pointer text-lg hover:text-amber-500" />
 
             <div className="absolute right-0 mt-2 w-44 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition">
@@ -76,7 +76,6 @@ function Navbar() {
                     Hi, {user.name}
                   </p>
 
-                  {/* 🧾 NEW: MY ORDERS LINK */}
                   <Link
                     to="/orders"
                     className="block px-4 py-2 text-sm hover:bg-slate-100 dark:hover:bg-slate-800"
@@ -121,15 +120,13 @@ function Navbar() {
             </div>
           </div>
 
-          {/* WISHLIST */}
           <Link
             to="/wishlist"
-            className="hidden md:flex items-center justify-center text-lg text-amber-500 hover:text-red-500"
+            className="flex items-center justify-center text-lg text-amber-500 hover:text-red-500"
           >
             <FaHeart />
           </Link>
 
-          {/* CART */}
           <button
             onClick={toggleCart}
             className="relative text-xl hover:scale-110"
@@ -149,6 +146,116 @@ function Navbar() {
           )} */}
         </div>
       </div>
+
+      {/* MOBILE MENU */}
+      {menuOpen && (
+        <div
+          className="
+      lg:hidden
+      border-t
+      border-slate-200
+      dark:border-slate-800
+      bg-white
+      dark:bg-slate-950
+      px-6
+      py-5
+      space-y-4
+      text-sm
+      font-medium
+    "
+        >
+          <Link
+            to="/new-arrivals"
+            onClick={() => setMenuOpen(false)}
+            className="block hover:text-amber-500"
+          >
+            New Arrivals
+          </Link>
+
+          <Link
+            to="/collections"
+            onClick={() => setMenuOpen(false)}
+            className="block hover:text-amber-500"
+          >
+            Collections
+          </Link>
+
+          <Link
+            to="/best-sellers"
+            onClick={() => setMenuOpen(false)}
+            className="block hover:text-amber-500"
+          >
+            Best Sellers
+          </Link>
+
+          <Link
+            to="/essentials"
+            onClick={() => setMenuOpen(false)}
+            className="block hover:text-amber-500"
+          >
+            Essentials
+          </Link>
+
+          <Link
+            to="/about"
+            onClick={() => setMenuOpen(false)}
+            className="block hover:text-amber-500"
+          >
+            About
+          </Link>
+
+          <Link
+            to="/contact"
+            onClick={() => setMenuOpen(false)}
+            className="block hover:text-amber-500"
+          >
+            Contact
+          </Link>
+
+          <div className="border-t border-slate-200 dark:border-slate-800 pt-4">
+            {user ? (
+              <>
+                <Link
+                  to="/orders"
+                  onClick={() => setMenuOpen(false)}
+                  className="block py-2 hover:text-amber-500"
+                >
+                  My Orders
+                </Link>
+
+                <button
+                  onClick={() => {
+                    signout();
+                    navigate("/");
+                    setMenuOpen(false);
+                  }}
+                  className="block py-2 hover:text-red-500"
+                >
+                  Sign Out
+                </button>
+              </>
+            ) : (
+              <>
+                <Link
+                  to="/signin"
+                  onClick={() => setMenuOpen(false)}
+                  className="block py-2 hover:text-amber-500"
+                >
+                  Sign In
+                </Link>
+
+                <Link
+                  to="/signup"
+                  onClick={() => setMenuOpen(false)}
+                  className="block py-2 hover:text-amber-500"
+                >
+                  Sign Up
+                </Link>
+              </>
+            )}
+          </div>
+        </div>
+      )}
     </nav>
   );
 }

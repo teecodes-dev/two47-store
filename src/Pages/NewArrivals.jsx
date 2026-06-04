@@ -24,7 +24,6 @@ const NewArrivalsPage = () => {
           duration-300
         "
       >
-        {/* ================= HERO SECTION ================= */}
         <section
           className="
             relative
@@ -36,7 +35,6 @@ const NewArrivalsPage = () => {
             overflow-hidden
           "
         >
-          {/* BACKGROUND IMAGE */}
           <motion.div
             initial={{ scale: 1.15 }}
             animate={{ scale: 1 }}
@@ -49,10 +47,8 @@ const NewArrivalsPage = () => {
             }}
           />
 
-          {/* OVERLAY */}
           <div className="absolute inset-0 bg-black/65 dark:bg-black/75" />
 
-          {/* CONTENT */}
           <div className="relative z-10 px-6 max-w-4xl">
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -98,9 +94,9 @@ const NewArrivalsPage = () => {
                 mx-auto
               "
             >
-              Discover the latest expressions of modern streetwear, premium
-              essentials, and timeless identity pieces crafted for confidence
-              and everyday luxury.
+              Discover the newest drops in modern streetwear, everyday
+              essentials, and clean identity pieces designed for confidence and
+              daily wear.
             </motion.p>
 
             <motion.div
@@ -114,12 +110,10 @@ const NewArrivalsPage = () => {
                 gap-4
                 flex-wrap
               "
-            >
-            </motion.div>
+            ></motion.div>
           </div>
         </section>
 
-        {/* ================= PRODUCT SECTION ================= */}
         <section
           className="
             py-24
@@ -154,7 +148,7 @@ const NewArrivalsPage = () => {
                 font-bold
               "
             >
-              Fresh From The Studio
+              Fresh For The Streets
             </h2>
 
             <p
@@ -166,12 +160,11 @@ const NewArrivalsPage = () => {
                 mx-auto
               "
             >
-              Explore the newest drops carefully curated for modern fashion,
+              Explore the newest drops, curated for modern style, clean
               simplicity, and elevated streetwear culture.
             </p>
           </motion.div>
 
-          {/* PRODUCT GRID */}
           <div
             className="
               grid
@@ -188,7 +181,7 @@ const NewArrivalsPage = () => {
           </div>
         </section>
 
-        {/* ================= PROMO SECTION ================= */}
+        
         <section
           className="
             py-20

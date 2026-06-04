@@ -26,9 +26,7 @@ function ProductsPage() {
   return (
     <AppLayout>
       <div className="min-h-screen bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300">
-        {/* ================= HERO ================= */}
         <section className="relative h-[70vh] flex items-center justify-center text-center overflow-hidden">
-          {/* background */}
           <motion.div
             initial={{ scale: 1.1 }}
             animate={{ scale: 1 }}
@@ -41,10 +39,8 @@ function ProductsPage() {
             }}
           />
 
-          {/* overlay (dark mode safe) */}
           <div className="absolute inset-0 bg-black/60 dark:bg-black/70" />
 
-          {/* content */}
           <div className="relative z-10 px-6 max-w-4xl">
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -52,7 +48,7 @@ function ProductsPage() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-amber-400 tracking-[0.3em] uppercase text-xs md:text-sm mb-6"
             >
-              Two47 Collections
+              Two47 • Collections
             </motion.p>
 
             <motion.h1
@@ -76,7 +72,6 @@ function ProductsPage() {
           </div>
         </section>
 
-        {/* ================= FILTER ================= */}
         <section className="max-w-7xl mx-auto px-6 py-12">
           <div className="flex justify-center mb-8">
             <SearchBar
@@ -101,7 +96,6 @@ function ProductsPage() {
             />
           </div>
 
-          {/* ================= PRODUCTS ================= */}
           {filteredProducts.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
               {filteredProducts.map((product) => (
@@ -115,7 +109,6 @@ function ProductsPage() {
           )}
         </section>
 
-        {/* ================= PROMO SECTION ================= */}
         <section className="py-16 bg-slate-950 dark:bg-white text-white dark:text-slate-950 text-center transition-colors duration-300">
           <h2 className="text-2xl md:text-4xl font-bold">
             New drops every week
@@ -125,7 +118,6 @@ function ProductsPage() {
             Stay ahead with exclusive releases and limited collections.
           </p>
 
-          {/* NEW BUTTON (requested) */}
           <div className="mt-8">
             <Link to="/new-arrivals">
               <button className="px-8 py-3 bg-amber-500 hover:bg-amber-600 text-white font-semibold rounded-full transition">

@@ -9,7 +9,7 @@ const EssentialsPreview = () => {
 
   return (
     <section className="py-24 px-6 max-w-7xl mx-auto">
-      {/* HEADING */}
+      
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -24,19 +24,19 @@ const EssentialsPreview = () => {
         <h2 className="text-3xl md:text-5xl font-bold">Essentials</h2>
 
         <p className="mt-4 text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-          Clean silhouettes and premium essentials crafted for everyday
+          Clean premium essentials for everyday
           confidence and effortless style.
         </p>
       </motion.div>
 
-      {/* PRODUCTS */}
+      
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
       </div>
 
-      {/* BUTTON */}
+      
       <div className="flex justify-center mt-14">
         <Link to="/essentials">
           <button

@@ -22,6 +22,7 @@ import AdminDashboard from "./Pages/AdminDashboard";
 
 import ProtectedRoute from "./Components/ProtectedRoute";
 import AdminRoute from "./Components/AdminRoute";
+import FAQsPage from "./Pages/FAQsPage";
 
 const App = () => {
   return (
@@ -30,7 +31,7 @@ const App = () => {
       <CartSidebar />
 
       <Routes>
-        {/* 🌍 PUBLIC ROUTES */}
+        
         <Route path="/" element={<HomePage />} />
         <Route path="/new-arrivals" element={<NewArrivals />} />
         <Route path="/best-sellers" element={<BestSellers />} />
@@ -42,8 +43,8 @@ const App = () => {
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/wishlist" element={<WishlistPage />} />
+        <Route path="/faqs" element={<FAQsPage />} />
 
-        {/* 🔐 PROTECTED USER ROUTES */}
         <Route
           path="/checkout"
           element={
@@ -80,7 +81,7 @@ const App = () => {
           }
         />
 
-        {/* 👑 ADMIN ROUTE */}
+      
         <Route
           path="/admin"
           element={

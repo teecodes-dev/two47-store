@@ -55,19 +55,19 @@ import { MdClose } from "react-icons/md";
 function SearchBar({ searchQuery, onSearchChange }) {
   return (
     <div className="flex items-center gap-3 border border-gray-300 rounded-full px-4 py-2 w-full `md:w-125` shadow-sm bg-white">
-      <FaSearch className="text-gray-500"/>
+      <FaSearch className="text-gray-500" />
 
       <input
         type="text"
         placeholder="Search products..."
         value={searchQuery}
         onChange={(e) => onSearchChange(e.target.value)}
-        className="w-full outline-none"
+        className="w-full outline-none dark:text-black"
       />
 
       {searchQuery && (
         <MdClose
-          className="cursor-pointer text-gray-500 hover:text-black"
+          className="cursor-pointer text-black hover:text-black"
           onClick={() => onSearchChange("")}
         />
       )}

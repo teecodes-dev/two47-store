@@ -25,22 +25,21 @@ const HomePage = () => {
     >
       <Navbar />
 
-      {/* HERO (keep strong presence) */}
+      
       <Herosection />
 
-      {/* FEATURED COLLECTIONS */}
+      
       <section className="py-12">
         <FeaturedCollections />
       </section>
 
-      {/* PRODUCT PREVIEWS */}
+    
       <section className="space-y-2 py-2">
         <NewArrivalsPreview />
         <BestSellersPreview />
         <EssentialsPreview />
       </section>
 
-      {/* BRAND SECTION */}
       <section className="max-w-7xl mx-auto px-6 py-12 text-center">
         <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
           Curated Fashion & Essentials for the Modern Lifestyle
@@ -52,12 +51,10 @@ const HomePage = () => {
         </p>
       </section>
 
-      {/* REVIEWS */}
       <section className="py-10">
         <CustomerReviews />
       </section>
 
-      {/* PROMO SECTION */}
       <section
         className="
           py-28

@@ -17,7 +17,6 @@ function CartSidebar() {
 
   return (
     <>
-      {/* 🌑 OVERLAY */}
       {isOpen && (
         <div
           onClick={closeCart}
@@ -31,7 +30,6 @@ function CartSidebar() {
         />
       )}
 
-      {/* 🛒 SIDEBAR */}
       <div
         className={`
           fixed top-0 right-0 h-full w-96 bg-white shadow-2xl z-50
@@ -41,7 +39,6 @@ function CartSidebar() {
           ${isOpen ? "translate-x-0" : "translate-x-full"}
         `}
       >
-        {/* HEADER */}
         <div className="flex justify-between p-4 border-b">
           <h2 className="font-bold">Cart</h2>
 
@@ -50,7 +47,6 @@ function CartSidebar() {
           </button>
         </div>
 
-        {/* CONTENT */}
         <div className="p-4 space-y-4 h-[70%] overflow-y-auto">
           {cartItems.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-full text-center text-gray-500">
@@ -84,8 +80,7 @@ function CartSidebar() {
             ))
           )}
         </div>
-
-        {/* FOOTER */}
+        
         {cartItems.length > 0 && (
           <div className="absolute bottom-0 w-full p-4 border-t bg-white dark:bg-slate-950 dark:text-slate-100">
             <h3 className="font-bold">Total: ₦{totalPrice.toLocaleString()}</h3>

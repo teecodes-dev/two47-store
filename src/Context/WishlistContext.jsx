@@ -8,32 +8,27 @@ export const WishlistProvider = ({ children }) => {
     return savedWishlist ? JSON.parse(savedWishlist) : [];
   });
 
-  // 💾 persist wishlist
   useEffect(() => {
     localStorage.setItem("wishlist", JSON.stringify(wishlist));
   }, [wishlist]);
 
-  // ❤️ TOGGLE wishlist (better UX than add-only)
   const toggleWishlist = (product) => {
     setWishlist((prev) => {
       const exists = prev.find((item) => item.id === product.id);
 
       if (exists) {
-        // remove if already exists
+
         return prev.filter((item) => item.id !== product.id);
       }
 
-      // add if not exists
       return [...prev, product];
     });
   };
 
-  // ❌ remove explicitly (optional)
   const removeFromWishlist = (id) => {
     setWishlist((prev) => prev.filter((item) => item.id !== id));
   };
 
-  // ✅ check if item is in wishlist (VERY useful for UI)
   const isInWishlist = (id) => {
     return wishlist.some((item) => item.id === id);
   };
@@ -52,7 +47,6 @@ export const WishlistProvider = ({ children }) => {
   );
 };
 
-// ✅ safe hook (prevents undefined crash like your Auth issue)
 export const useWishlist = () => {
   const context = useContext(WishlistContext);
 

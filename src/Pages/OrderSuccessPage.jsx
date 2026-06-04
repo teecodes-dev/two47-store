@@ -31,7 +31,6 @@ function OrderSuccessPage() {
           </div>
         </div>
 
-        {/* TITLE */}
         <h1 className="text-3xl font-bold text-green-500">Order Confirmed</h1>
 
         <p className="mt-2 text-slate-600 dark:text-slate-400">
@@ -39,7 +38,6 @@ function OrderSuccessPage() {
           received.
         </p>
 
-        {/* ORDER CARD */}
         <div className="mt-8 border border-slate-200 dark:border-slate-800 rounded-xl p-6 text-left bg-white dark:bg-slate-900/40">
           <div className="flex justify-between mb-4">
             <p className="text-sm text-slate-500">Order ID</p>
@@ -77,14 +75,12 @@ function OrderSuccessPage() {
           </div>
         </div>
 
-        {/* NEXT STEPS */}
         <div className="mt-6 text-sm text-slate-500 space-y-2">
-          <p>📦 We are preparing your order</p>
-          <p>🚚 You will receive updates via email</p>
-          <p>⏱ Delivery usually takes 2–5 business days</p>
+          <p> We are preparing your order</p>
+          <p> You will receive updates via email</p>
+          <p> Delivery usually takes 2-7 business days</p>
         </div>
 
-        {/* BUTTONS */}
         <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
           <button
             onClick={() => navigate("/orders")}

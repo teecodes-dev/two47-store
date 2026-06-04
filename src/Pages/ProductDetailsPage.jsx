@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import { useState } from "react";
 
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
@@ -14,8 +15,10 @@ function ProductDetailsPage() {
   const product = products.find((item) => item.id === Number(id));
 
   const { addToCart } = useCart();
-
   const { toggleWishlist, isInWishlist } = useWishlist();
+
+  // ✅ NEW: selected size state
+  const [selectedSize, setSelectedSize] = useState(null);
 
   if (!product) {
     return (
@@ -31,7 +34,6 @@ function ProductDetailsPage() {
 
       <section className="max-w-7xl mx-auto px-6 py-20">
         <div className="grid md:grid-cols-2 gap-12">
-          {/* PRODUCT IMAGE */}
           <div>
             <img
               src={product.image}
@@ -40,7 +42,6 @@ function ProductDetailsPage() {
             />
           </div>
 
-          {/* PRODUCT INFO */}
           <div className="space-y-8">
             <p className="text-amber-400 uppercase tracking-[0.3em] text-xs">
               {product.collection}
@@ -53,11 +54,12 @@ function ProductDetailsPage() {
             </p>
 
             <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-              Designed for confidence, comfort, and timeless expression. Every
-              Two47 piece is crafted with premium materials and clean detailing.
+              A premium essential designed to blend comfort,
+              quality, and modern style. Created for individuals who value
+              confidence, simplicity, and everyday versatility, this piece is
+              made to fit seamlessly into any wardrobe.
             </p>
 
-            {/* SIZE SELECT */}
             <div>
               <h3 className="font-semibold mb-4">Select Size</h3>
 
@@ -65,17 +67,15 @@ function ProductDetailsPage() {
                 {["S", "M", "L", "XL"].map((size) => (
                   <button
                     key={size}
-                    className="
-                      border
-                      border-slate-300
-                      dark:border-slate-700
-                      px-5
-                      py-3
-                      rounded-xl
-                      hover:border-amber-500
-                      hover:text-amber-500
-                      transition
-                    "
+                    onClick={() => setSelectedSize(size)}
+                    className={`
+                      border px-5 py-3 rounded-xl transition
+                      ${
+                        selectedSize === size
+                          ? "bg-amber-500 text-white border-amber-500"
+                          : "border-slate-300 dark:border-slate-700 hover:border-amber-500 hover:text-amber-500"
+                      }
+                    `}
                   >
                     {size}
                   </button>
@@ -83,11 +83,15 @@ function ProductDetailsPage() {
               </div>
             </div>
 
-            {/* ACTION BUTTONS */}
             <div className="flex gap-4 flex-wrap">
-              {/* ADD TO CART */}
+              
               <button
-                onClick={() => addToCart(product)}
+                onClick={() =>
+                  addToCart({
+                    ...product,
+                    size: selectedSize || "M",
+                  })
+                }
                 className="
                   bg-amber-500
                   hover:bg-amber-600
@@ -102,7 +106,6 @@ function ProductDetailsPage() {
                 Add To Cart
               </button>
 
-              {/* WISHLIST */}
               <button
                 onClick={() => toggleWishlist(product)}
                 className="

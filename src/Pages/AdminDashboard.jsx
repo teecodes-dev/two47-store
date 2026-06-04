@@ -9,7 +9,6 @@ function AdminDashboard() {
   const [orders, setOrders] = useState([]);
   const [filter, setFilter] = useState("all");
 
-  // ✅ SAFE ADMIN PROTECTION (NO UI CHANGE)
   if (user?.role !== "admin") {
     return (
       <div className="min-h-screen flex items-center justify-center text-red-500 text-xl font-bold">

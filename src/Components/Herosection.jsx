@@ -20,14 +20,13 @@ const Herosection = () => {
       <div className="absolute inset-0 bg-black/65" />
 
       <div className="relative z-10 text-center px-6 max-w-4xl">
-        
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-amber-400 tracking-[0.3em] uppercase text-xs md:text-sm mb-6"
         >
-          Two47 • Luxury Streetwear
+          Two47 • Your style • Your identity • Your rules
         </motion.p>
 
         <motion.h1
@@ -47,8 +46,8 @@ const Herosection = () => {
           transition={{ duration: 1, delay: 0.6 }}
           className="mt-6 text-slate-300 text-base md:text-lg max-w-2xl mx-auto"
         >
-          A modern fashion label inspired by confidence, culture, and timeless
-          street luxury. Designed for individuals who define their own presence.
+          Discover modern streetwear, essentials, and everyday fits designed to
+          match your style. Shop the latest drops and upgrade your wardrobe
         </motion.p>
 
         <motion.div

@@ -3,36 +3,36 @@ import { motion } from "framer-motion";
 const reviews = [
   {
     id: 1,
-    name: "Daniel A.",
+    name: "Daniel",
     comment:
-      "Two47 quality exceeded my expectations. The fit, fabric, and finishing feel premium.",
+      "Two47 products are of top quality and exceeded my expectations. The fit and fabric feel premium.",
   },
   {
     id: 2,
-    name: "Sarah M.",
+    name: "Sarah",
     comment:
-      "Finally found a fashion brand that combines luxury with everyday comfort.",
+      "Finally found a fashion store that combines luxury with everyday comfort.",
   },
   {
     id: 3,
-    name: "Michael K.",
+    name: "Michael",
     comment: "The hoodie I got from Two47 instantly became my favorite piece.",
   },
   {
     id: 4,
-    name: "Ayo T.",
+    name: "Ayo",
     comment:
-      "Clean design, perfect fit. You can tell attention to detail is serious.",
+      "I love the fit i got, everything fit perfectly. You can tell attention to detail is serious.",
   },
   {
     id: 5,
-    name: "James O.",
+    name: "James",
     comment:
-      "Every drop feels exclusive. This brand understands modern streetwear.",
+      "Every purchase feels exclusive.",
   },
   {
     id: 6,
-    name: "Linda P.",
+    name: "Linda",
     comment:
       "I love how minimal yet premium everything feels. Definitely coming back.",
   },
@@ -41,7 +41,7 @@ const reviews = [
 const CustomerReviews = () => {
   return (
     <section className="py-10 overflow-hidden bg-slate-950">
-      {/* HEADER */}
+      
       <div className="text-center mb-10">
         <p className="text-amber-400 font-semibold uppercase tracking-[0.3em] text-sm mb-4">
           Community Voices
@@ -52,7 +52,7 @@ const CustomerReviews = () => {
         </h2>
       </div>
 
-      {/* MARQUEE */}
+      
       <div className="relative w-full overflow-hidden">
         <motion.div
           className="flex gap-6 w-max"
@@ -81,12 +81,12 @@ const CustomerReviews = () => {
                 flex-col
               "
             >
-              {/* COMMENT (takes available space) */}
+              
               <p className="text-slate-300 leading-relaxed flex-1">
                 “{review.comment}”
               </p>
 
-              {/* NAME FIXED TO BOTTOM */}
+              
               <h4 className="text-amber-400 font-semibold mt-4">
                 {review.name}
               </h4>

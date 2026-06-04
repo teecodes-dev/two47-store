@@ -17,7 +17,7 @@ function TrackOrderPage() {
     setOrders(userOrders);
   }, [user]);
 
-  // 🔥 SIMULATE LIVE STATUS UPDATE (for demo / frontend only)
+
   const updateStatus = (orderId, newStatus) => {
     const allOrders = JSON.parse(localStorage.getItem("orders")) || [];
 
@@ -30,7 +30,7 @@ function TrackOrderPage() {
 
     localStorage.setItem("orders", JSON.stringify(updated));
 
-    // refresh UI
+    
     const userOrders = updated.filter(
       (order) => order.userId === (user?.email || "guest"),
     );
@@ -67,7 +67,7 @@ function TrackOrderPage() {
                 key={order.id}
                 className="border border-slate-200 dark:border-slate-800 p-5 rounded-xl"
               >
-                {/* HEADER */}
+    
                 <div className="flex justify-between mb-3">
                   <p className="font-semibold">
                     Tracking #: {order.trackingNumber}
@@ -82,7 +82,6 @@ function TrackOrderPage() {
                   </span>
                 </div>
 
-                {/* ITEMS */}
                 <div className="space-y-2 text-sm">
                   {order.items.map((item) => (
                     <div key={item.id} className="flex justify-between">
@@ -96,13 +95,13 @@ function TrackOrderPage() {
                   ))}
                 </div>
 
-                {/* TOTAL */}
+              
                 <div className="mt-4 font-bold">
                   Total: ₦{order.total.toLocaleString()}
                 </div>
 
-                {/* DEMO BUTTONS (REMOVE LATER FOR ADMIN PANEL) */}
-                <div className="flex gap-3 mt-4 text-xs">
+                
+                {/* <div className="flex gap-3 mt-4 text-xs">
                   <button
                     onClick={() => updateStatus(order.id, "Processing")}
                     className="px-3 py-1 bg-yellow-500 text-black rounded"
@@ -123,7 +122,7 @@ function TrackOrderPage() {
                   >
                     Delivered
                   </button>
-                </div>
+                </div> */}
               </div>
             ))}
           </div>

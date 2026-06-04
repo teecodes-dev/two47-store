@@ -54,7 +54,7 @@ const SignUp = () => {
         animate={{ opacity: 1, y: 0 }}
         className="w-full max-w-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-8 shadow-lg"
       >
-        {/* THEME TOGGLE */}
+      
         <div className="flex justify-end mb-2">
           <button
             onClick={toggleTheme}
@@ -64,7 +64,7 @@ const SignUp = () => {
           </button>
         </div>
 
-        {/* BRAND */}
+      
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold">
             <span className="text-amber-500">Two</span>
@@ -77,7 +77,7 @@ const SignUp = () => {
           </p>
         </div>
 
-        {/* FORM */}
+        
         <form onSubmit={handleSubmit} className="space-y-5">
           <input
             name="name"
@@ -122,7 +122,7 @@ const SignUp = () => {
           </button>
         </form>
 
-        {/* FOOTER */}
+      
         <p className="text-center text-sm text-slate-500 dark:text-slate-400 mt-6">
           Already have an account?{" "}
           <Link to="/signin" className="text-amber-500 font-medium">

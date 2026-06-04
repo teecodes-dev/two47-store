@@ -20,17 +20,14 @@ export function CartProvider({ children }) {
 
   const toastRef = useRef(null);
 
-  // 💾 Save cart
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cartItems));
   }, [cartItems]);
 
-  // 🛒 Cart controls
   const openCart = () => setIsOpen(true);
   const closeCart = () => setIsOpen(false);
   const toggleCart = () => setIsOpen((prev) => !prev);
 
-  // 🔔 Toast system
   const showToast = (message, type = "success") => {
     setToast({ message, type });
 
@@ -41,12 +38,16 @@ export function CartProvider({ children }) {
     }, 2000);
   };
 
-  // ➕ Add to cart (FIXED VERSION)
   const addToCart = (product) => {
-    const exists = cartItems.find((item) => item.id === product.id);
+    const productSize = product.size || "M";
+
+    // ✅ match BOTH id + size (VERY IMPORTANT)
+    const exists = cartItems.find(
+      (item) => item.id === product.id && item.size === productSize,
+    );
+
     const currentQty = exists ? exists.quantity : 0;
 
-    // ✅ SAFE STOCK CHECK (prevents undefined crash)
     if (product.stock !== undefined) {
       if (product.stock === 0) {
         showToast("Out of stock ❌", "error");
@@ -62,50 +63,58 @@ export function CartProvider({ children }) {
     setCartItems((prev) => {
       if (exists) {
         return prev.map((item) =>
-          item.id === product.id
+          item.id === product.id && item.size === productSize
             ? { ...item, quantity: item.quantity + 1 }
             : item,
         );
       }
 
-      return [...prev, { ...product, quantity: 1 }];
+      return [
+        ...prev,
+        {
+          ...product,
+          size: productSize, 
+          quantity: 1,
+        },
+      ];
     });
 
-    showToast("Item added to cart ✔", "success");
+    showToast(`Added to cart (${productSize}) ✔`, "success");
   };
-
-  // 🔼 Increase qty
-  const increaseQty = (id) => {
+  
+  const increaseQty = (id, size) => {
     setCartItems((prev) =>
       prev.map((item) =>
-        item.id === id ? { ...item, quantity: item.quantity + 1 } : item,
+        item.id === id && item.size === size
+          ? { ...item, quantity: item.quantity + 1 }
+          : item,
       ),
     );
   };
 
-  // 🔽 Decrease qty
-  const decreaseQty = (id) => {
+  const decreaseQty = (id, size) => {
     setCartItems((prev) =>
       prev
         .map((item) =>
-          item.id === id ? { ...item, quantity: item.quantity - 1 } : item,
+          item.id === id && item.size === size
+            ? { ...item, quantity: item.quantity - 1 }
+            : item,
         )
         .filter((item) => item.quantity > 0),
     );
   };
 
-  // ❌ Remove item
-  const removeItem = (id) => {
-    setCartItems((prev) => prev.filter((item) => item.id !== id));
+  const removeItem = (id, size) => {
+    setCartItems((prev) =>
+      prev.filter((item) => !(item.id === id && item.size === size)),
+    );
   };
 
-  // 🧮 Cart count
   const cartCount = useMemo(
     () => cartItems.reduce((sum, item) => sum + item.quantity, 0),
     [cartItems],
   );
 
-  // 💰 Total price
   const totalPrice = useMemo(
     () => cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0),
     [cartItems],

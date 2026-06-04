@@ -33,7 +33,6 @@ const SignIn = () => {
       return;
     }
 
-    // 👑 ADMIN AUTO REDIRECT LOGIC (NEW ADDITION ONLY)
     if (res.user?.role === "admin") {
       navigate("/admin");
     } else {
@@ -48,7 +47,7 @@ const SignIn = () => {
         animate={{ opacity: 1, y: 0 }}
         className="w-full max-w-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-8 shadow-lg"
       >
-        {/* THEME TOGGLE */}
+
         <div className="flex justify-end mb-2">
           <button
             onClick={toggleTheme}
@@ -58,7 +57,7 @@ const SignIn = () => {
           </button>
         </div>
 
-        {/* BRAND */}
+  
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold">
             <span className="text-amber-500">Two</span>
@@ -67,11 +66,10 @@ const SignIn = () => {
           </h1>
 
           <p className="text-slate-500 dark:text-slate-400 text-sm mt-2">
-            Welcome back — sign in to continue
+            Welcome back sign in to continue
           </p>
         </div>
 
-        {/* FORM */}
         <form onSubmit={handleSubmit} className="space-y-5">
           <input
             type="email"
@@ -99,7 +97,6 @@ const SignIn = () => {
           </button>
         </form>
 
-        {/* FOOTER */}
         <p className="text-center text-sm text-slate-500 dark:text-slate-400 mt-6">
           Don’t have an account?{" "}
           <Link to="/signup" className="text-amber-500 font-medium">

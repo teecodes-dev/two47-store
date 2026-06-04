@@ -5,7 +5,6 @@ import { useCart } from "../Context/CartContext";
 const ProductCard = ({ product, pageTitle }) => {
   const { addToCart } = useCart();
 
-  // ================= TAG LABEL =================
   const getTagLabel = () => {
     if (pageTitle) return pageTitle;
 
@@ -16,10 +15,9 @@ const ProductCard = ({ product, pageTitle }) => {
     return "Collection";
   };
 
-  // ================= TAG COLOR SYSTEM =================
   const getTagColor = () => {
     if (product.tags?.includes("essentials")) {
-      return "bg-blue-500 text-white"; // ✅ ESSENTIALS = BLUE
+      return "bg-blue-500 text-white";
     }
 
     if (product.tags?.includes("best-seller")) {
@@ -46,9 +44,11 @@ const ProductCard = ({ product, pageTitle }) => {
         relative
         shadow-lg hover:shadow-amber-500/10
         max-w-[320px]
+        h-full
+        flex flex-col
       "
     >
-      {/* WISHLIST */}
+  
       <button
         className="
           absolute top-3 right-3 z-20
@@ -62,7 +62,6 @@ const ProductCard = ({ product, pageTitle }) => {
         <Heart size={16} />
       </button>
 
-      {/* TAG BADGE */}
       <div
         className={`
           absolute top-3 left-3 z-20
@@ -76,8 +75,7 @@ const ProductCard = ({ product, pageTitle }) => {
         {getTagLabel()}
       </div>
 
-      {/* IMAGE + LINK */}
-      <Link to={`/product/${product.id}`}>
+      <Link to={`/product/${product.id}`} className="flex flex-col flex-grow">
         <div className="overflow-hidden">
           <img
             src={product.image}
@@ -91,16 +89,15 @@ const ProductCard = ({ product, pageTitle }) => {
           />
         </div>
 
-        <div className="p-4">
+        <div className="p-4 flex-grow">
           <p className="text-[11px] uppercase tracking-widest text-slate-400">
             Streetwear
           </p>
 
-          <h3 className="text-white text-base font-semibold mt-2 group-hover:text-amber-400 transition">
+          <h3 className="text-white text-base font-semibold mt-2 min-h-[48px] group-hover:text-amber-400 transition">
             {product.name}
           </h3>
 
-          {/* STARS */}
           <div className="flex items-center gap-1 mt-2">
             {[...Array(5)].map((_, index) => (
               <Star
@@ -112,19 +109,16 @@ const ProductCard = ({ product, pageTitle }) => {
             <span className="text-slate-400 text-xs ml-1">(4.9)</span>
           </div>
 
-          {/* PRICE */}
           <div className="flex items-center gap-2 mt-3">
             <p className="text-amber-400 text-base font-bold">
               ₦{product.price.toLocaleString()}
             </p>
-            <p className="text-slate-500 line-through text-xs">₦80,000</p>
           </div>
 
           <p className="text-green-400 text-xs mt-1">In Stock</p>
         </div>
       </Link>
 
-      {/* ADD TO CART */}
       <div className="px-4 pb-4">
         <button
           onClick={() => addToCart(product)}

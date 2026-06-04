@@ -34,7 +34,6 @@ function CheckoutPage() {
 
   const [cryptoTxHash, setCryptoTxHash] = useState("");
 
-  // Auto-fill user info (optional improvement)
   useEffect(() => {
     if (user) {
       setForm((prev) => ({
@@ -72,20 +71,14 @@ function CheckoutPage() {
 
     const newOrder = {
       id: Date.now(),
-
-      // 👇 IMPORTANT: user separation fix
       userId: user?.email || "guest",
-
       items: cartItems,
       total: totalPrice,
       customer: form,
       paymentMethod,
       cryptoTxHash: paymentMethod === "crypto" ? cryptoTxHash : null,
-
-      // 👇 tracking system
       status: "Processing",
       trackingNumber: "TWF-" + Math.floor(100000 + Math.random() * 900000),
-
       date: new Date().toISOString(),
     };
 
@@ -105,9 +98,8 @@ function CheckoutPage() {
       <Navbar />
 
       <div className="max-w-7xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-12">
-        {/* LEFT SIDE */}
+        
         <div className="space-y-10">
-          {/* SHIPPING */}
           <section>
             <h2 className="text-2xl font-bold mb-4">Shipping Information</h2>
 
@@ -165,7 +157,7 @@ function CheckoutPage() {
             </div>
           </section>
 
-          {/* PAYMENT */}
+          
           <section>
             <h2 className="text-2xl font-bold mb-4">Payment Method</h2>
 
@@ -183,7 +175,6 @@ function CheckoutPage() {
               ))}
             </div>
 
-            {/* BANK */}
             {paymentMethod === "bank" && (
               <div className="mt-4 p-4 rounded bg-slate-100 dark:bg-slate-900 text-sm">
                 <p>
@@ -198,7 +189,6 @@ function CheckoutPage() {
               </div>
             )}
 
-            {/* CARD */}
             {paymentMethod === "card" && (
               <div className="mt-4 space-y-3">
                 <input
@@ -237,20 +227,14 @@ function CheckoutPage() {
               </div>
             )}
 
-            {/* CRYPTO */}
             {paymentMethod === "crypto" && (
               <div className="mt-4 space-y-3 p-4 rounded bg-slate-100 dark:bg-slate-900 text-sm">
                 <p>
-                  <b>USDT / USDC (ETH / BSC)</b>
+                  <b>USDT / USDC</b>
                 </p>
                 <p className="break-all">
                   0xef2C2d6957E9cED16CEf2ED50d307FCacc96ADe8
                 </p>
-
-                <p className="mt-2">
-                  <b>BTC</b>
-                </p>
-                <p className="break-all">13jNJg2ZgknEHGJNQJ7taX9VPW1TZBmN8S</p>
 
                 <input
                   placeholder="Transaction Hash / ID"
@@ -263,27 +247,29 @@ function CheckoutPage() {
           </section>
         </div>
 
-        {/* RIGHT SIDE */}
+        
         <div className="border border-slate-200 dark:border-slate-800 rounded-xl p-6">
           <h2 className="text-xl font-semibold mb-4">Order Summary</h2>
 
           <div className="space-y-3 max-h-60 overflow-y-auto">
             {cartItems.map((item) => (
               <div
-                key={item.id}
+                key={`${item.id}-${item.size || "default"}`}
                 className="flex justify-between items-center text-sm border-b pb-2"
               >
                 <div>
                   <p>
-                    {item.name} × {item.quantity}
+                    {item.name} {item.size && `(${item.size})`} ×{" "}
+                    {item.quantity}
                   </p>
+
                   <p className="text-amber-500">
                     ₦{(item.price * item.quantity).toLocaleString()}
                   </p>
                 </div>
 
                 <button
-                  onClick={() => removeItem(item.id)}
+                  onClick={() => removeItem(item.id, item.size)}
                   className="text-red-500"
                 >
                   <MdDelete />

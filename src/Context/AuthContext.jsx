@@ -5,13 +5,13 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
-  // LOAD SESSION USER
+  
   useEffect(() => {
     const currentUser = localStorage.getItem("currentUser");
     if (currentUser) setUser(JSON.parse(currentUser));
   }, []);
 
-  // SIGN UP (MULTI USER SAFE)
+
   const signup = (data) => {
     const users = JSON.parse(localStorage.getItem("users")) || [];
 
@@ -36,7 +36,6 @@ export const AuthProvider = ({ children }) => {
     return { success: true };
   };
 
-  // SIGN IN
   const signin = (email, password) => {
     const users = JSON.parse(localStorage.getItem("users")) || [];
 
@@ -56,11 +55,10 @@ export const AuthProvider = ({ children }) => {
 
     return {
       success: true,
-      user: foundUser, // 👈 IMPORTANT ADDITION
+      user: foundUser,
     };
   };
 
-  // SIGN OUT
   const signout = () => {
     localStorage.removeItem("currentUser");
     setUser(null);

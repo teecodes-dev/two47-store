@@ -9,7 +9,7 @@ const NewArrivalsPreview = () => {
 
   return (
     <section className="py-24 px-6 max-w-7xl mx-auto">
-      {/* HEADING */}
+
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -29,14 +29,12 @@ const NewArrivalsPreview = () => {
         </p>
       </motion.div>
 
-      {/* PRODUCTS */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
       </div>
 
-      {/* BUTTON */}
       <div className="flex justify-center mt-14">
         <Link to="/new-arrivals">
           <button

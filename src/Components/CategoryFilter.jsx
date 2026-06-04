@@ -11,7 +11,7 @@ function CategoryFilter({ selectedCategory, onSelectCategory }) {
   ];
 
   return (
-    <div className="flex flex-col gap-2 text-gray-600">
+    <div className="flex flex-col gap-2 text-gray-600 dark:text-white">
       <span>FILTER BY CATEGORY</span>
       <div className="flex flex-wrap gap-2 ">
         {categories.map((cat) => (
@@ -21,7 +21,7 @@ function CategoryFilter({ selectedCategory, onSelectCategory }) {
             className={` cursor-pointer h-10 px-3 rounded text-sm border transition ${
               selectedCategory === cat
                 ? "bg-gray-900 text-white border-gray-900"
-                : "bg-white text-gray-700 hover:bg-orange-600 hover:text-white"
+                : "bg-white text-gray-700 hover:bg-amber-600 hover:text-white"
             }`}
           >
             {cat}

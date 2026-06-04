@@ -14,9 +14,9 @@ const Essentials = ({ limit }) => {
   return (
     <AppLayout>
       <div className="min-h-screen bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300">
-        {/* ================= HERO ================= */}
+        
         <section className="relative h-[65vh] flex items-center justify-center text-center overflow-hidden">
-          {/* Background */}
+
           <motion.div
             initial={{ scale: 1.1 }}
             animate={{ scale: 1 }}
@@ -29,10 +29,8 @@ const Essentials = ({ limit }) => {
             }}
           />
 
-          {/* Overlay */}
           <div className="absolute inset-0 bg-black/60 dark:bg-black/70" />
 
-          {/* Content */}
           <div className="relative z-10 px-6 max-w-4xl">
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -64,7 +62,6 @@ const Essentials = ({ limit }) => {
           </div>
         </section>
 
-        {/* ================= INTRO ================= */}
         {!limit && (
           <section className="max-w-4xl mx-auto text-center px-6 py-16">
             <h2 className="text-2xl md:text-4xl font-bold">
@@ -72,13 +69,11 @@ const Essentials = ({ limit }) => {
             </h2>
 
             <p className="mt-4 text-slate-600 dark:text-slate-400">
-              Essentials are the core of your wardrobe — minimal, functional,
-              and designed to work with everything you wear.
+              Essentials are the core of your wardrobe and designed to work with everything you wear.
             </p>
           </section>
         )}
 
-        {/* ================= PRODUCTS ================= */}
         <section className="py-16 px-6 max-w-7xl mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
             {displayedProducts.map((product) => (
@@ -90,7 +85,6 @@ const Essentials = ({ limit }) => {
             ))}
           </div>
 
-          {/* BUTTON (HOME ONLY) */}
           {limit && (
             <div className="flex justify-center mt-14">
               <Link to="/essentials">
@@ -102,7 +96,6 @@ const Essentials = ({ limit }) => {
           )}
         </section>
 
-        {/* ================= PROMO ================= */}
         {!limit && (
           <section className="py-16 bg-slate-950 dark:bg-white text-white dark:text-slate-950 text-center transition-colors duration-300">
             <h2 className="text-2xl md:text-4xl font-bold">
@@ -111,7 +104,7 @@ const Essentials = ({ limit }) => {
 
             <p className="mt-3 text-slate-300 dark:text-slate-600 max-w-2xl mx-auto">
               Essentials are designed to work silently in the background of your
-              wardrobe — reliable, repeatable, and timeless.
+              wardrobe, reliable, repeatable, and timeless.
             </p>
 
             <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
@@ -122,7 +115,7 @@ const Essentials = ({ limit }) => {
               </Link>
 
               <Link to="/best-sellers">
-                <button className="px-8 py-3 border border-slate-300 dark:border-slate-700 rounded-full hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition">
+                <button className="px-8 py-3 border border-slate-300 dark:border-slate-700 rounded-full hover:bg-white hover:text-black dark:hover:bg-black dark:hover:text-white transition">
                   Best Sellers
                 </button>
               </Link>

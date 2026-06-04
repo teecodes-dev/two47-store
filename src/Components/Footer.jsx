@@ -1,28 +1,31 @@
+import { Link } from "react-router-dom";
+
 const footerLinks = {
-  Shop: [
-    "New Arrivals",
-    "Best Sellers",
-    "Streetwear",
-    "Essentials",
-    "Collections",
-  ],
+  Shop: ["New Arrivals", "Best Sellers", "Essentials", "Collections"],
 
-  "Customer Care": [
-    "Track Order",
-    "Shipping & Delivery",
-    "Returns & Exchanges",
-    "Payment Options",
-    "FAQs",
-    "Contact Us",
-  ],
+  "Customer Care": ["Track Order", "Returns & Exchanges", "FAQs", "Contact Us"],
 
-  "About Two47": ["Our Story", "Wholesale", "Sustainability", "Community"],
+  "About Two47": ["Our Story", "New Arrivals", "Best Sellers", "Essentials"],
+};
+
+const footerRoutes = {
+  "New Arrivals": "/new-arrivals",
+  "Best Sellers": "/best-sellers",
+  Essentials: "/essentials",
+  Collections: "/collections",
+
+  "Track Order": "/orders",
+  "Returns & Exchanges": "/contact",
+  FAQs: "/faqs",
+  "Contact Us": "/contact",
+
+  "Our Story": "/about",
 };
 
 const Footer = () => {
   return (
     <footer className="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
-      {/* TOP SECTION */}
+      
       <div
         className="
           max-w-7xl
@@ -37,7 +40,7 @@ const Footer = () => {
           gap-12
         "
       >
-        {/* BRAND COLUMN */}
+        
         <div className="space-y-4">
           <h2 className="text-3xl font-bold italic">
             <span className="text-amber-500">Two</span>
@@ -46,12 +49,11 @@ const Footer = () => {
           </h2>
 
           <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed max-w-xs">
-            Premium streetwear crafted for confidence, comfort, and timeless
+            Where you get Premium streetwear that gives confidence, comfort, and timeless
             expression.
           </p>
         </div>
 
-        {/* LINKS */}
         {Object.entries(footerLinks).map(([title, links]) => (
           <div key={title}>
             <h3
@@ -67,19 +69,20 @@ const Footer = () => {
 
             <ul className="space-y-3">
               {links.map((link) => (
-                <li
-                  key={link}
-                  className="
-                    text-sm
-                    text-slate-600
-                    dark:text-slate-400
-                    hover:text-amber-500
-                    cursor-pointer
-                    transition-colors
-                    duration-300
-                  "
-                >
-                  {link}
+                <li key={link}>
+                  <Link
+                    to={footerRoutes[link] || "#"}
+                    className="
+                      text-sm
+                      text-slate-600
+                      dark:text-slate-400
+                      hover:text-amber-500
+                      transition-colors
+                      duration-300
+                    "
+                  >
+                    {link}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -87,7 +90,7 @@ const Footer = () => {
         ))}
       </div>
 
-      {/* BOTTOM SECTION */}
+     
       <div className="border-t border-slate-200 dark:border-slate-800">
         <div
           className="
@@ -100,7 +103,7 @@ const Footer = () => {
             flex-col
             md:flex-row
             items-center
-            justify-between
+            justify-center
             gap-4
             text-sm
             text-slate-500
@@ -111,7 +114,7 @@ const Footer = () => {
             Nigeria • © {new Date().getFullYear()} Two47. All Rights Reserved.
           </p>
 
-          <div className="flex flex-wrap gap-6">
+          {/* <div className="flex flex-wrap gap-6">
             <span className="hover:text-amber-500 cursor-pointer transition">
               Terms
             </span>
@@ -131,7 +134,7 @@ const Footer = () => {
             <span className="hover:text-amber-500 cursor-pointer transition">
               Accessibility
             </span>
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>
